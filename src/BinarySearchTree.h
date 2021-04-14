@@ -10,7 +10,6 @@
 
 #include <iostream>
 #include "Exception.h"
-#include "Node.h"
 
 namespace std {
 
@@ -23,18 +22,26 @@ class BinarySearchTreeChangedSubtree : BinarySearchTreeException {};
 class BinarySearchTreeNotFound : BinarySearchTreeException {};
 
 template <class DataType>
+class BinarySearchTree;
+
+template <class DataType>
+ostream& operator << (ostream& s,  BinarySearchTree<DataType>& X);
+
+template <class DataType>
 class BinarySearchTree {
 
 	friend ostream& operator<< <DataType> (ostream& s,  BinarySearchTree<DataType>& X);
 
 	protected:
 
-		Node<DataType>* _root;
-		BinarySearchTree<DataType>* _left;
-		BinarySearchTree<DataType>* _right;
-		bool _subtree;
+		DataType* _root; //root of the tree
+		DataType _info; //contains the info from the (x,y) tree
+		BinarySearchTree<DataType>* _left; //left subtree
+		BinarySearchTree<DataType>* _right; //right subtree
+		bool _subtree; //is subtree
+		//bool _leaft; //is leaf node
 
-		virtual BinarySearchTree<DataType>* makeSubtree();
+		virtual BinarySearchTree<DataType>* makeSubtree();// initializes an empty subtree
 		virtual void copyTree (BinarySearchTree<DataType>* bst);
 		virtual void _makeNull ();
 		BinarySearchTree<DataType>* _find (const DataType& data);
