@@ -21,9 +21,7 @@ int main()
 	int x1, x2, y1, y2;
 	BinarySearchTree<int> xTree;
 
-	while (!cin.eof()){
-		cin >> command;
-
+	while (cin >> command){
 		switch (command){
 		case INSERT:
 			cin >> xVal >> yVal >> info;
